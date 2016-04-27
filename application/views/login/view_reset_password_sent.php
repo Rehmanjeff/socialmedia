@@ -1,0 +1,1 @@
+<h2>Link has been sent to your email address.</h2>
