@@ -39,7 +39,7 @@ class Model_login extends CI_Model
 					}
 
 					$sess_data = array(
-					'id' => $row->id,
+					'id' => $row->user_id,
 					'username' => $username,
 					'name' => $row->name,
 					'password' => $userpass,
@@ -113,7 +113,7 @@ class Model_login extends CI_Model
 	private function set_session($session_data)
 	{
 		$sess_data = array(
-			'id' => $session_data['id'],
+			'id' => $session_data['user_id'],
 			'name' => $session_data['name'],
 			'username' => $session_data['username'],
 			'email' => $session_data['email'],

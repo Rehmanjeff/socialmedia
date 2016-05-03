@@ -5,7 +5,11 @@
 	<title>Document</title>
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/bootstrap.min.css"/>
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/custom.css"/>
-	<script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
 	<script src="<?php echo base_url();?>assets/js/jquery.js"></script>
+	<script src="<?php echo base_url();?>assets/js/bootstrap.min.js"></script>
+
+
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Open+Sans+Condensed:300|Raleway' rel='stylesheet' type='text/css'>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 </head>
 <body>

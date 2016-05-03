@@ -51,11 +51,11 @@ class Model_register extends CI_Model
 	{
 		#$row = $this->db->insert_id();
 		#$sql = $this->db->get('users',array('row'=>$row),1,$email); #, 'reg_time'=>$reg
-		$sql = "SELECT id,reg_time FROM users WHERE email = '".$email."' LIMIT 1";
+		$sql = "SELECT user_id,reg_time FROM users WHERE email = '".$email."' LIMIT 1";
 		$result = $this->db->query($sql);
 		$row = $result->row();
 		$sess_data = array(
-			'id' => $row,
+			'id' => $row->user_id,
 			'name' => $name,
 			'username' => $username,
 			'email' => $email,

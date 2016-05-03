@@ -14,23 +14,25 @@
 				if ($check) 
 				{?>
 				<div class="row">
-				  <div class="col-xs-4 col-xs-3">
+
+				  	<a href="article"><input class="btn btn-primary " value="Add Article" type="submit" style="float:right;" /></a>
+				  <div class="col-xs-4">
 					
 					<?php 
 					// print_r($session_data);
 					if (isset($session_data['image'])) 
 					{
-						echo "Successfully Uploaded DP";
+						// echo "Successfully Uploaded DP";
 						// echo $_SESSION['image'];
 					?>
 					 
-					<img src="<?php echo '../uploads/'.$session_data['image']; ?>" width = "190" height="170"/>
+					<img src="<?php echo '../uploads/'.$session_data['image']; ?>" width = "170" height="170"/>
 					  	</br>
 					  	<?php
 					  } 
 					  else
 					  	{
-					  		echo "i got no variable from upload controller";
+					  		echo "Can't find requested picture from upload controller";
 					  		}?>				
 
 					<?php if(isset($error))echo $error;
@@ -43,8 +45,10 @@
 					</form>
 				  <hr>
 				  </div>
-				  <div class="col-xs-6 col-xs-5">
-				  	
+				  <div class="col-xs-6">
+				  	<div>
+				  		<label for="">Title:</label><?php echo "Some Title";?>
+				  	</div>
 				  </div>
 				</div>
 
