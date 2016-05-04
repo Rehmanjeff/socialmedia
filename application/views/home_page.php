@@ -14,8 +14,6 @@
 				if ($check) 
 				{?>
 				<div class="row">
-
-				  	<a href="article"><input class="btn btn-primary " value="Add Article" type="submit" style="float:right;" /></a>
 				  <div class="col-xs-4">
 					
 					<?php 
@@ -46,8 +44,13 @@
 				  <hr>
 				  </div>
 				  <div class="col-xs-6">
+
+				  	<a href="article"><input class="btn btn-primary " value="Add Article" type="submit" style="float:right;" /></a>
+				  	<br><br>
+				  	<br><br>
+
 				  	<div>
-				  		<label for="">Title:</label><?php echo "Some Title";?>
+				  		<label for="">Selecet Catagory:</label><?php echo "Some Title";?>
 				  	</div>
 				  </div>
 				</div>

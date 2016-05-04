@@ -4,6 +4,29 @@ class Model_article extends CI_Model
 	public function __construct()
 	{
 		parent::__construct();
+		$session_data = $this->session->userdata('logged_in');
+	}
+
+	public function fetch_catagory($user_id)
+	{
+		$query = $this->db->get_where('catagory', array('user_id_fk' => $user_id ));
+
+		/*foreach ($query->result() as $row)
+		{
+		        echo $row->title;
+		}*/
+		$data = $query->row();
+		
+		if ($data) 
+		{
+/*			$cat = array(
+			'cat_id' => $data->cat_id,
+			'cat_name' => $data->cat_name,
+			 );*/
+			return $data;
+		}
+
+			return FALSE;
 	}
 
 	public function add_article()

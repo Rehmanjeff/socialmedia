@@ -69,13 +69,27 @@
 				<label for="sel1">Title:</label>
 					<input type="text" name="title" class="form-control" placeholder="Title of Article">
 				<br>
-				<label for="sel1">Select list (select one):</label>
-			      <select class="form-control" id="catagory" name="catagory">
-			        <option value="abstract">Abstract</option>
-			        <option value="art">Art</option>
-			        <option value="fictional">Fictional</option>
-			        <option value="other">other</option>
-			      </select>
+				<!-- <label for="sel1">Select Catagory:</label> -->
+			      
+			      <script type="text/javascript">
+					function CheckColors(val){
+					 var element=document.getElementById('color');
+					 if(val=='pick a color'||val=='others')
+					   element.style.display='block';
+					 else  
+					   element.style.display='none';
+					}
+
+				</script> 
+			       <select name="color" class="selectpicker form-control" style=" width: 150px;" onchange='CheckColors(this.value);'> 
+				    <option>Select Catagory</option>  
+				    <option value="red">RED</option>
+				    <option value="blue">BLUE</option>
+				    <option value="others">others</option>
+				  </select>
+				  <br>
+				<input type="text" placeholder="Enter Catagory Name" class="form-control"  name="color" id="color" style='display:none; width: 170px;'/>
+
 			     <br>
 				<label for="sel1">Article:</label>
 				<textarea class="form-control" name="articletext" id="" cols="80" rows="10"></textarea>

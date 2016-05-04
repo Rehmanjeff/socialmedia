@@ -15,7 +15,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="<?php echo base_url();?>index.php/account">Home</a></li>
                 <li><a href="#">Profile</a></li>
-                <li class="dropdown">
+                <!-- <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">Messages <b class="caret"></b></a>
                     <ul role="menu" class="dropdown-menu">
                         <li><a href="#">Inbox</a></li>
@@ -24,7 +24,7 @@
                         <li class="divider"></li>
                         <li><a href="#">Trash</a></li>
                     </ul>
-                </li>
+                </li> -->
             </ul>
             <form role="search" class="navbar-form navbar-left">
                 <div class="form-group">
