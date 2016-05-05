@@ -37,7 +37,23 @@ class Model_article extends CI_Model
 	{
 			$id = $this->input->post('hiddenValue');
 			$title = $this->input->post('title');
-			$catagory = $this->input->post('catagory');
+			$catagory_id = $this->input->post('catagory_select');
+
+			if (isset($_POST['cat']))
+			{
+				$cat_input = $this->input->post('cat');
+
+				$add_catagory = "INSERT INTO catagory (`user_id_fk`,`cat_name`) VALUES ( '{$id}' ,'{$cat_input}' ) ";
+				$result_catagory = $this->db->query($add_catagory);
+
+				$retrive_catagory = "SELECT cat_id FROM catagory WHERE cat_name = '{$cat_input}' ";
+				
+				$result = $this->db->query($retrive_catagory)->row();
+				
+				$catagory_id = $result->cat_id; 
+
+			}
+
 			$articletext = $this->input->post('articletext',true);
 			// $data = array(
 			// 	'id' => 'hiddenValue',
@@ -47,9 +63,12 @@ class Model_article extends CI_Model
 /*
 			$sql = "INSERT INTO user_articles (`user_id_fk`, `title`, `catagory`, `article`) VALUES ('$data['id']', '{$data['title']', '$data['catagory']', '$data['articletext']');"*/
 			
+			// echo $catagory_id; 
+			// die();
+			$sql = " INSERT INTO user_articles (`cat_id_fk`, `title`, `article`) VALUES ( '$catagory_id', '{$title}', '{$articletext}'); ";
 
-			$sql = "INSERT INTO user_articles (`user_id_fk`, `title`, `catagory`, `article`) VALUES ('{$id}', '{$title}', '{$catagory}', '{$articletext}')";
-
+/*			$sql = "INSERT INTO user_articles (`cat_id_fk`, `title`, `article`) VALUES ('{$catagory_id}', '{$title}', '{$articletext}') ";
+*/
 			$result = $this->db->query($sql);
 			$row = $this->db->affected_rows();
 

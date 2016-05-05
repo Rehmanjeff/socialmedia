@@ -86,25 +86,24 @@
 			      <script type="text/javascript">
 					function CheckColors(val){
 					 var element=document.getElementById('color');
-					 if(val=='pick a color'||val=='others')
+					 if(id=='others')
 					   element.style.display='block';
 					 else  
 					   element.style.display='none';
 					}
 
 				</script> 
-			       <select name="color" class="selectpicker form-control" style=" width: 150px;" onchange='CheckColors(this.value);'> 
+			       <select name="catagory_select" class="selectpicker form-control" style=" width: 150px;" onchange='CheckColors(this.value);'> 
 				    <option>Select Catagory</option>  
 				    <?php
-						foreach ($query->result() as $key): 
-							print_r($key);
+						foreach ($query->result() as $key):
 				    ?>
 				    <option value="<?php echo $key->cat_id; ?>"><?php echo $key->cat_name; ?></option>
 				    <?php endforeach; ?>
-				    <option value="others">others</option>
+				    <option id="others">others</option>
 				  </select>
 				  <br>
-				<input type="text" placeholder="Enter Catagory Name" class="form-control"  name="color" id="color" style='display:none; width: 170px;'/>
+				<input type="text" placeholder="Enter Catagory Name" class="form-control"  name="cat" id="color" style='/*display:none;*/ width: 170px;'/>
 
 			     <br>
 				<label for="sel1">Article:</label>

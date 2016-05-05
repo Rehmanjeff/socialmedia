@@ -42,7 +42,6 @@ class Article extends CI_Controller
 		else
 		{
 			$title = $this->input->post('title');
-			$
 
 			$result = $this->model_article->add_article();
 			
