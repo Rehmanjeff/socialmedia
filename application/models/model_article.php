@@ -9,13 +9,25 @@ class Model_article extends CI_Model
 
 	public function fetch_catagory($user_id)
 	{
-		$query = $this->db->get_where('catagory', array('user_id_fk' => $user_id ));
+		$query = "SELECT * FROM catagory WHERE user_id_fk = {$user_id} "; 
+		// echo $query;
+		// die();
+		#$this->db->get_where('catagory', array('user_id_fk' => $user_id ));
+		$query = $this->db->query($query);
+		// $array = array('user_id_fk =' => $user_id );
+		// $query = $this->db->get_where('catagory',$array);
+		// $data = $query->row();
+		// $data = $this->db->affected_rows();
 
-		$data = $query->row();
-		
-		if ($data) 
+		/*		$arrayName = array();
+		foreach ($data as $key) {
+			$arrayName[] = $key;
+		}*/
+// print_r($data);
+// die();
+		if ($query) 
 		{
-			return $data;
+			return $query;
 		}
 
 			return FALSE;

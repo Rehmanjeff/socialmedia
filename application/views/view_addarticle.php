@@ -1,5 +1,16 @@
 <?php
 	$session_data = $this->session->userdata('logged_in');
+			
+			/*$data = array();
+			foreach ($query->result() as $key) 
+			{
+			print_r($key);
+			// echo "<br>";
+				$data[] = $key;
+			}
+			// print_r($data);
+			die();*/
+					    	
 ?>
 <div class="container">
 <div class="row">
@@ -84,9 +95,12 @@
 				</script> 
 			       <select name="color" class="selectpicker form-control" style=" width: 150px;" onchange='CheckColors(this.value);'> 
 				    <option>Select Catagory</option>  
-				    <?php ?>
-				    <option value="<?php echo $cat_id; ?>"><?php echo $cat_name?></option>
-				    <?php ?>
+				    <?php
+						foreach ($query->result() as $key): 
+							print_r($key);
+				    ?>
+				    <option value="<?php echo $key->cat_id; ?>"><?php echo $key->cat_name; ?></option>
+				    <?php endforeach; ?>
 				    <option value="others">others</option>
 				  </select>
 				  <br>

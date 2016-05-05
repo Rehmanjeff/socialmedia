@@ -14,14 +14,8 @@ class Article extends CI_Controller
 // die();
 		if ($session_data) 
 		{
-			$catagory = $this->model_article->fetch_catagory($session_data['id']);
-			$catagory = array(
-			'cat_id' => $catagory->cat_id,
-			'cat_name' => $catagory->cat_name,
-			 );
-			
-print_r($catagory);
-die();
+			$catagory['query'] = $this->model_article->fetch_catagory($session_data['id']);
+
 			$this->load->view('layouts/header');
 			$this->load->view('view_addarticle',$catagory);
 			$this->load->view('layouts/footer');
