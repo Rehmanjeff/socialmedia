@@ -19,7 +19,9 @@ class Article extends CI_Controller
 			'cat_id' => $catagory->cat_id,
 			'cat_name' => $catagory->cat_name,
 			 );
-
+			
+print_r($catagory);
+die();
 			$this->load->view('layouts/header');
 			$this->load->view('view_addarticle',$catagory);
 			$this->load->view('layouts/footer');
@@ -45,6 +47,9 @@ class Article extends CI_Controller
 		}
 		else
 		{
+			$title = $this->input->post('title');
+			$
+
 			$result = $this->model_article->add_article();
 			
 			if(!$result)

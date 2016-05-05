@@ -3,7 +3,8 @@
 ?>
 <div class="container">
 <div class="row">
-	<?php include('navbar.php'); ?>
+	<?php include('navbar.php'); 
+	?>
 </div>
 <script type="text/javascript">
 
@@ -83,8 +84,9 @@
 				</script> 
 			       <select name="color" class="selectpicker form-control" style=" width: 150px;" onchange='CheckColors(this.value);'> 
 				    <option>Select Catagory</option>  
-				    <option value="red">RED</option>
-				    <option value="blue">BLUE</option>
+				    <?php ?>
+				    <option value="<?php echo $cat_id; ?>"><?php echo $cat_name?></option>
+				    <?php ?>
 				    <option value="others">others</option>
 				  </select>
 				  <br>

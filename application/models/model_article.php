@@ -11,18 +11,10 @@ class Model_article extends CI_Model
 	{
 		$query = $this->db->get_where('catagory', array('user_id_fk' => $user_id ));
 
-		/*foreach ($query->result() as $row)
-		{
-		        echo $row->title;
-		}*/
 		$data = $query->row();
 		
 		if ($data) 
 		{
-/*			$cat = array(
-			'cat_id' => $data->cat_id,
-			'cat_name' => $data->cat_name,
-			 );*/
 			return $data;
 		}
 
