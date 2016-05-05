@@ -14,7 +14,7 @@
         <div id="navbarCollapse" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="<?php echo base_url();?>index.php/account">Home</a></li>
-                <li><a href="#">Profile</a></li>
+                <li><a href="<?php echo base_url();?>index.php/article/articles_view">Articles</a></li>
                 <!-- <li class="dropdown">
                     <a data-toggle="dropdown" class="dropdown-toggle" href="#">Messages <b class="caret"></b></a>
                     <ul role="menu" class="dropdown-menu">

@@ -33,14 +33,24 @@ class Model_article extends CI_Model
 			return FALSE;
 	}
 
+	public function display($catagory_id)
+	{
+		$sql = "SELECT * FROM user_articles WHERE cat_id_fk = '{$catagory_id}' ";
+		$result = $this->db->query($sql);
+		return $result;
+	}
+
 	public function add_article()
 	{
 			$id = $this->input->post('hiddenValue');
 			$title = $this->input->post('title');
 			$catagory_id = $this->input->post('catagory_select');
 
-			if (isset($_POST['cat']))
+			$cat = $this->input->post('cat');
+
+			if (!isset($cat))
 			{
+
 				$cat_input = $this->input->post('cat');
 
 				$add_catagory = "INSERT INTO catagory (`user_id_fk`,`cat_name`) VALUES ( '{$id}' ,'{$cat_input}' ) ";

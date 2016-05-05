@@ -49,9 +49,6 @@
 				  	<br><br>
 				  	<br><br>
 
-				  	<div>
-				  		<label for="">Selecet Catagory:</label><?php echo "Some Title";?>
-				  	</div>
 				  </div>
 				</div>
 
