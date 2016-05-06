@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = 'http://localhost/socialmedia/';
+$config['base_url'] = $_SERVER['HTTP_HOST'].'/socialmedia/';
 
 /*
 |--------------------------------------------------------------------------
