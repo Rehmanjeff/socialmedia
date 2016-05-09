@@ -47,18 +47,23 @@ body {
 ?>
 <div class="container">
 	<div class="row">
-		<h2 style="margin-left: 12px;">Please Signin</h2>
-		<?php echo form_open('user_authentication/user_login_process', array('class' => 'form-signin' ));
+	<?php 
 
-		echo "<div class='error_msg'>";
+		echo "<div class='alert alert-danger' role='alert'>";
 		
 		if (isset($error_message)) 
 		{
+			
 			echo $error_message;
+
+			
 		}
+		
 		echo validation_errors();
 		echo "</div>";
-		?>
+	?>
+		<h2 style="margin-left: 12px;">Please Signin</h2>
+		<?php echo form_open('user_authentication/user_login_process', array('class' => 'form-signin' ));?>
 		<div class="form-group">
 			<div class="col-xs-3">
 				<label>UserName :</label>

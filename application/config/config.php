@@ -513,7 +513,6 @@ $config['admin_email'] = "admin_testing@gopro.com";
 $config['bot_email'] = "admin@testsite.com";
 
 
-
 $config['upload_path'] = './uploads/';
 $config['allowed_types'] = 'gif|jpg|png';
 $config['max_size']     = '100';

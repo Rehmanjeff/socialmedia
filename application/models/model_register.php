@@ -103,7 +103,7 @@ class Model_register extends CI_Model
 			<title>Document</title>
 		</head>
 		<body>';
-		$message .='<p>thanks for registering on test site, please <strong><a href="' .base_url(). 'register/validate_email/'.$email.'/'.$email_code.'" >click here</a></strong> to activate your account. After you have activated your account, you will be avaliable to log in to your account</p>';
+		$message .='<p>thanks for registering on test site, please <strong><a href="' .base_url().'register/validate_email/'.$email.'/'.$email_code.'" >click here</a></strong> to activate your account. After you have activated your account, you will be avaliable to log in to your account</p>';
 		$message .='<p>Thank Your </p>';
 		$message .='</body></html>';
 		$this->email->message($message);

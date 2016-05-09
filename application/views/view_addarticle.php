@@ -82,29 +82,40 @@
 					<input type="text" name="title" class="form-control" placeholder="Title of Article">
 				<br>
 				<!-- <label for="sel1">Select Catagory:</label> -->
-			      
-			      <script type="text/javascript">
-					function CheckColors(val){
-					 var element=document.getElementById('color');
-					 if(id=='others')
-					   element.style.display='block';
-					 else  
-					   element.style.display='none';
-					}
+		
+			  <script type="text/javascript">
+				     function admSelectCheck(nameSelect)
+				{
+				     console.log(nameSelect);
+				    if(nameSelect){
+				        admOptionValue = document.getElementById("admOption").value;
+				        if(admOptionValue == nameSelect.value){
+				            document.getElementById("admDivCheck").style.display = "block";
+				        }
+				        else{
+				            document.getElementById("admDivCheck").style.display = "none";
+				        }
+				    }
+				    else{
+				        document.getElementById("admDivCheck").style.display = "none";
+				    }}
+			</script> 
 
-				</script> 
-			       <select name="catagory_select" class="selectpicker form-control" style=" width: 150px;" onchange='CheckColors(this.value);'> 
+
+			       <select name="catagory_select" class="selectpicker form-control" style=" width: 150px;" onchange='admSelectCheck(this);'> 
 				    <option>Select Catagory</option>  
 				    <?php
 						foreach ($query->result() as $key):
 				    ?>
 				    <option value="<?php echo $key->cat_id; ?>"><?php echo $key->cat_name; ?></option>
 				    <?php endforeach; ?>
-				    <option id="others">others</option>
+				    <option id="admOption">others</option>
 				  </select>
-				  <br>
-				<input type="text" placeholder="Enter Catagory Name" class="form-control"  name="cat" id="color" style='/*display:none;*/ width: 170px;'/>
 
+				  <br>
+				  <div id="admDivCheck" style="display: none;">
+					<input type="text" placeholder="Enter Catagory Name" class="form-control"  name="cat" id="color" style='width: 170px;'/>
+					</div>
 			     <br>
 				<label for="sel1">Article:</label>
 				<textarea class="form-control" name="articletext" id="" cols="80" rows="10"></textarea>
