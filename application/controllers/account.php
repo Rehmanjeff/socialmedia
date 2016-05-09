@@ -20,9 +20,9 @@ class Account extends CI_Controller
 		}
 		else
 		{
-			$this->load->view('layouts/header');
+			// $this->load->view('layouts/header');
 			$this->load->view('login_form'); #,array('logged_in' => $this->logged_in)
-			$this->load->view('layouts/footer');
+			// $this->load->view('layouts/footer');
 		}
 	}
 		

@@ -11,9 +11,9 @@ Class User_Authentication extends CI_Controller
 	// Show login page
 	public function index() 
 	{
-		$this->load->view('layouts/header');
+		// $this->load->view('layouts/header');
 		$this->load->view('login_form');
-		$this->load->view('layouts/footer');
+		// $this->load->view('layouts/footer');
 	}
 
 	public function user_login_process() 
@@ -34,9 +34,9 @@ Class User_Authentication extends CI_Controller
 
 			if ($this->form_validation->run() == FALSE) 
 			{
-				$this->load->view('layouts/header');
+				// $this->load->view('layouts/header');
 				$this->load->view('login_form');
-				$this->load->view('layouts/footer');
+				// $this->load->view('layouts/footer');
 			} 
 			
 			else 
@@ -51,25 +51,25 @@ Class User_Authentication extends CI_Controller
 							break;
 						case 'incorrect_password':
 							echo "Error loging in, password not correct...!";
-							$this->load->view('layouts/header');
+							// $this->load->view('layouts/header');
 							$this->load->view('login_form');
-							$this->load->view('layouts/footer'); 
+							// $this->load->view('layouts/footer'); 
 
 							break;
 
 						case 'not_activated':
 							echo "Please activate your account before logging in...!";
-							$this->load->view('layouts/header');
+							// $this->load->view('layouts/header');
 							$this->load->view('login_form');
-							$this->load->view('layouts/footer'); 
+							// $this->load->view('layouts/footer'); 
 
 							break;
 
 						case 'incorrect_username':
 							echo "Error loging in, password/username not correct...!";
-							$this->load->view('layouts/header');
+							// $this->load->view('layouts/header');
 							$this->load->view('login_form');
-							$this->load->view('layouts/footer'); 
+							// $this->load->view('layouts/footer'); 
 
 							break;
 						

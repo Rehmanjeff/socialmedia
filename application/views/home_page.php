@@ -24,7 +24,7 @@
 						// echo $_SESSION['image'];
 					?>
 					 
-					<img src="<?php echo '../uploads/'.$session_data['image']; ?>" width = "170" height="170"/>
+					<img src="<?php echo base_url().'/../uploads/'.$session_data['image']; ?>" width = "170" height="170"/>
 					  	</br>
 					  	<?php
 					  } 

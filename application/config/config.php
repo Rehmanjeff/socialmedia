@@ -17,7 +17,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = $_SERVER['HTTP_HOST'].'/socialmedia/';
+$config['base_url'] = ''; #$_SERVER['HTTP_HOST'].'/socialmedia/
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ $config['base_url'] = $_SERVER['HTTP_HOST'].'/socialmedia/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = ''; #index.php
 
 /*
 |--------------------------------------------------------------------------
