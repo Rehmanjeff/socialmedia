@@ -59,6 +59,12 @@
 			});*/
 		</script>
 <div class="container">
+<?php 
+if(isset($error))
+{
+	echo $error;
+}
+?>
 	<div class="row">
 		<div class="col-xs-6">
 			<?php
@@ -102,7 +108,7 @@
 			</script> 
 
 
-			       <select name="catagory_select" class="selectpicker form-control" style=" width: 150px;" onchange='admSelectCheck(this);'> 
+			       <select name="catagory_select" class="selectpicker form-control" style=" width: 150px;" onchange='admSelectCheck(this);' required> 
 				    <option>Select Catagory</option>  
 				    <?php
 						foreach ($query->result() as $key):

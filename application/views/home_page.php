@@ -6,13 +6,41 @@
 <div class="container">
 <div class="row">
 	<?php include('navbar.php'); ?>
+	<script>
+			// Ajax post
+			$(function() {
+				$('#upload_file').submit(function(e) {
+					e.preventDefault();
+					$.ajaxFileUpload({
+						url 			:'upload/do_upload', 
+						secureuri		: false,
+						fileElementId	:'userfile',
+						dataType		: 'json',
+						data			: {
+							// 'title'				: $('#title').val()
+						},
+						success	: function (data, status)
+						{
+							if(data.status != 'error')
+							{
+								$('#files').html('<p>Reloading files...</p>');
+								refresh_files();
+								// $('#title').val('');
+							}
+							alert(data.msg);
+						}
+					});
+					return false;
+				});
+			});
+	</script>
 </div>
 	<div class="row">
 		<div class="col-xs-10">
 			<?php
 
-				if ($check) 
-				{?>
+				// if ($check) 
+				// {?>
 				<div class="row">
 				  <div class="col-xs-4">
 					
@@ -34,20 +62,18 @@
 					  		}?>				
 
 					<?php if(isset($error))echo $error;
-					echo form_open_multipart('upload/do_upload');?>
+					// echo form_open_multipart('upload/do_upload');?>
+					<form enctype="multipart/form-data" accept-charset="utf-8" name="formname" id="formname"  method="post" action="">
 					
 					<input type="file" name="userfile"/>
 					<br />
-					<input type="submit" name="submit" value="upload" />
+					<input type="submit" name="submit" id="upload_file"; value="upload" />
 
 					</form>
 				  <hr>
 				  </div>
 				  <div class="col-xs-6">
 
-				  	<a href="article"><input class="btn btn-primary " value="Add Article" type="submit" style="float:right;" /></a>
-				  	<br><br>
-				  	<br><br>
 
 				  </div>
 				</div>
@@ -74,15 +100,15 @@
 
 				<?php
 					  
-				}
-				else
-				{
-					// session_set_cookie_params(0);
-					 include('browser_triger.php');
-					 $session_data['username'];
-					 $session_data['name'];
-					 $session_data['email'];
-				}
+				// }
+				// else
+				// {
+				// 	// session_set_cookie_params(0);
+				// 	 // include('browser_triger.php');
+				// 	 $session_data['username'];
+				// 	 $session_data['name'];
+				// 	 $session_data['email'];
+				// }
 			?>
 		</div>
 	</div>

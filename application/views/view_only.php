@@ -22,8 +22,9 @@
 	<div class="row">
 
 
-		 	 <div class="col-md-5 col-md-offset-5">
+		 	 <div class="col-md-8">
 		 	 	<?php 
+		 	 	if (!empty($data)) {
 		 	 		foreach ($data->result() as $key): ?>
 		 	 		<label for="">Title: </label><?php echo $key->title; ?>
 		 	 		<br>
@@ -33,7 +34,7 @@
 		 	 		</p>
 		 	 		<br>
 		 	 		<hr>
-		 	 		<?php endforeach; ?>
+		 	 		<?php endforeach; } else{ echo "Nothing to display";}?>
 		 	 </div>
 		</div>
 	</div>

@@ -93,7 +93,7 @@ class Model_register extends CI_Model
 		$mail = new phpmailer();
 		$mail->isSMTP();
 		$mail->SMTPAuth = true;
-		$mail->SMTPDebug = 2;
+		// $mail->SMTPDebug = 2;
 
 		$mail->Host = 'smtp.gmail.com';
 		$mail->Username = 'habib.rehman@jotixtech.com';

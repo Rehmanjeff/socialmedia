@@ -83,19 +83,35 @@ class Article extends CI_Controller
         if ($this->form_validation->run() === FALSE)
 		{
 
-			$this->load->view('layouts/header');
-			$this->load->view('view_addarticle');
-			$this->load->view('layouts/footer');
+			// $this->load->view('layouts/header');
+			// $this->load->view('view_addarticle');
+			// $this->load->view('layouts/footer');
+			redirect('article');
 		}
 		else
 		{
 			$title = $this->input->post('title');
 
-			$result = $this->model_article->add_article();
+			$input_cat = $this->input->post('cat');
+			
+			//If input field has some value then add that value first then show it over view page
+			if (isset($input_cat)) 
+			{
+				$result = $this->model_article->add_cat($input_cat);
+				if ($result) {
+					// print_r($result);
+					// die();
+					// $result = $result->db->row();
+					$cat_id = $result;
+					$result = $this->model_article->add_cat_art($cat_id);
+				}
+			}
+			else
+				$result = $this->model_article->add_article();
 			
 			if(!$result)
             {
-                echo "Coulnd't register, contact site admin help@xyz.com";
+                echo "Coulnd't add your article, contact site admin help@xyz.com";
             }
 
             else

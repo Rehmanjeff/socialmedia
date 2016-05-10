@@ -40,6 +40,47 @@ class Model_article extends CI_Model
 		return $result;
 	}
 
+	public function add_cat($input_cat)
+	{
+		$id = $this->input->post('hiddenValue');
+		$query = "INSERT INTO catagory(`user_id_fk`,`cat_name`) VALUES ( '{$id}' ,'{$input_cat}' )";
+		// echo $query;
+		// die();
+		$sql = $this->db->query($query);
+
+		// $result = $this->db->query($sql);
+		// print_r($sql);
+		// die();
+		$row = $this->db->insert_id();
+		return $row;
+	}
+
+	public function add_cat_art($cat_id)
+	{
+
+		$catagory_id = $cat_id;
+
+			$title = $this->input->post('title');
+			$articletext = $this->input->post('articletext',true);
+			
+			$sql = " INSERT INTO user_articles (`cat_id_fk`, `title`, `article`) VALUES ( '$catagory_id', '{$title}', '{$articletext}'); ";
+
+			$result = $this->db->query($sql);
+			// $row = $result->row();
+
+			if ($result) {
+				return true;
+			}
+			else
+			{
+				echo "Couldn't perform query";
+				die(mysqli_error($sql));
+				return false;
+			}
+
+		return $result;
+	}
+
 	public function add_article()
 	{
 			$id = $this->input->post('hiddenValue');
@@ -48,7 +89,7 @@ class Model_article extends CI_Model
 
 			$cat = $this->input->post('cat');
 
-			if (!isset($cat))
+			/*if (!isset($cat))
 			{
 
 				$cat_input = $this->input->post('cat');
@@ -62,7 +103,7 @@ class Model_article extends CI_Model
 				
 				$catagory_id = $result->cat_id; 
 
-			}
+			}*/
 
 			$articletext = $this->input->post('articletext',true);
 			// $data = array(

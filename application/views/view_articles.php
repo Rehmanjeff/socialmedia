@@ -20,10 +20,19 @@
 
 <div class="container">
 	<div class="row">
+					  	<label for="">
+				  		Add new Article: 
+				  	</label><br>
+				  	<a href="<?php echo base_url();?>article"><input class="btn btn-primary " value="Add Article" type="submit" style="/*float:right;*/" /></a>
+				  	<br><br><br><br>
+<label for="">
+				  		View Articles by Catagory: 
+				  	</label>
+<!-- 		<div class="col-md-4"> -->
 
-		<div class="col-md-2">
+
 			<!-- <?php form_open('display_articles', array('id' => 'recommendForm'));?> -->
-			 	
+			 		
 			 	<form action="display_articles" method="post">
 			 	<select name="catagory_select" class="selectpicker form-control" style=" width: 150px;"> 
 				    <option>Select Catagory</option>  
@@ -37,7 +46,7 @@
 				<br>
 				<input class="btn btn-primary" type="submit" value="Submit">
 			</form>
-		</div>
+		<!-- </div> -->
 
 		 	 <div class="col-md-2 col-md-offset-5">
 		 	 	<?php 
@@ -53,7 +62,7 @@
 		 	 		<br>
 		 	 		<hr>
 		 	 		<?php endforeach; 
-		 	 	 } else echo "No cat selected yet"; ?>
+		 	 	 } ?> 
 		 	 </div>
 		</div>
 	</div>
