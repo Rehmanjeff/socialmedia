@@ -509,7 +509,7 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 $config['salt'] = '$u%r)^*s';
-$config['admin_email'] = "admin_testing@gopro.com";
+$config['admin'] = "rehmank360@gopro.com";
 $config['bot_email'] = "admin@testsite.com";
 
 

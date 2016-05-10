@@ -2,6 +2,7 @@
 /**
 * 
 */
+require_once('phpmailer/PHPMailerAutoload.php');
 class Model_register extends CI_Model
 {
 	private $email_code;
@@ -88,25 +89,51 @@ class Model_register extends CI_Model
 	}
 	public function	send_validation_email($email)
 	{
-		$this->load->library('email');
-		$email = $this->session->userdata('email');
+		// $this->load->library('email');
+		$mail = new phpmailer();
+		$mail->isSMTP();
+		$mail->SMTPAuth = true;
+		$mail->SMTPDebug = 2;
+
+		$mail->Host = 'smtp.gmail.com';
+		$mail->Username = 'habib.rehman@jotixtech.com';
+		$mail->Password = 'cheerUPlife2';
+		$mail->SMTPSecure = 'ssl';
+		$mail->Port = 465;
+
+		$mail->From = 'habib.rehman@jotixtech.com';
+		$mail->FromName = 'Admin';
+
+		// $email = $this->session->userdata('email');
+
+		$mail->addAddress($email,'Sender email');
+		$mail->isHTML(true);
+		// $mail->addCC('habib.rehman@jotixtech.com','Sender email');
+		// $mail->addBCC('habib.rehman@jotixtech.com','Sender email');
+		$mail->Subject='Activate Account';
+		$mail->Body='text body of an email id';
+
+
 		$email_code = $this->email_code;
-		$this->email->set_mailtype('html');
-		$this->email->from($this->config->item('bot_email'),'authentication email');
-		$this->email->to($email);
-		$this->email->subject('Please activate your account');
-		$message = '<!DOCTYPE html>
+		// $this->email->set_mailtype('html');
+		// $this->email->from($this->config->item('bot_email'),'authentication email');
+		// $this->email->to($email);
+		// $this->email->subject('Please activate your account');
+		$mail->Body= '<!DOCTYPE html>
 		<html lang="en">
 		<head>
 			<meta charset="UTF-8">
 			<title>Document</title>
 		</head>
 		<body>';
-		$message .='<p>thanks for registering on test site, please <strong><a href="' .base_url(). 'register/validate_email/'.$email.'/'.$email_code.'" >click here</a></strong> to activate your account. After you have activated your account, you will be avaliable to log in to your account</p>';
-		$message .='<p>Thank Your </p>';
-		$message .='</body></html>';
-		$this->email->message($message);
-		$this->email->send();
+		$mail->Body.='<p>thanks for registering on test site, please <strong><a href="' .base_url(). 'register/validate_email/'.$email.'/'.$email_code.'" >click here</a></strong> to activate your account. After you have activated your account, you will be avaliable to log in to your account</p>';
+		$mail->Body .='<p>Thank Your </p>';
+		$mail->Body .='</body></html>';
+		// $this->email->message($message);
+		// $this->email->send();
+
+		$mail->send();
+
 	}
 	private function activate_account($email_address)
 	{

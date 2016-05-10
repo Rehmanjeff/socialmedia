@@ -1,4 +1,6 @@
 <?php
+require_once('phpmailer/PHPMailerAutoload.php');
+
 class Login extends CI_Controller
 {
 	public function __construct()
@@ -145,26 +147,74 @@ class Login extends CI_Controller
 
 	public function send_reset_password_email($email, $name)
 	{
-		$this->load->library('email');
+		// $this->load->library('email');
+		
 		$email_code = md5($this->config->item('salt').$name);
 
-		$this->email->set_mailtype('html');
-		$this->email->from($this->config->item('bot_email'),'reset password email');
-		$this->email->to($email);
-		$this->email->subject('Please reset your password');
 
-		$message = "<!DOCTYPE html><html>
+
+		$mail = new phpmailer();
+		$mail->isSMTP();
+		$mail->SMTPAuth = true;
+		// $mail->SMTPDebug = 2;
+
+		$mail->Host = 'smtp.gmail.com';
+		$mail->Username = 'habib.rehman@jotixtech.com';
+		$mail->Password = 'cheerUPlife2';
+		$mail->SMTPSecure = 'ssl';
+		$mail->Port = 465;
+
+		$mail->From = 'habib.rehman@jotixtech.com';
+		$mail->FromName = 'Admin';
+
+		// $email = $this->session->userdata('email');
+
+		$mail->addAddress($email,'Sender email');
+		$mail->isHTML(true);
+		// $mail->addCC('habib.rehman@jotixtech.com','Sender email');
+		// $mail->addBCC('habib.rehman@jotixtech.com','Sender email');
+		$mail->Subject='Please Reset Your Password';
+		$mail->Body='text body of an email id';
+
+
+		// $email_code = $this->email_code;
+		// $this->email->set_mailtype('html');
+		// $this->email->from($this->config->item('bot_email'),'authentication email');
+		// $this->email->to($email);
+		// $this->email->subject('Please activate your account');
+		$mail->Body= '<!DOCTYPE html>
+		<html lang="en">
 		<head>
-			<title>Reset Password</title>
+			<meta charset="UTF-8">
+			<title>Document</title>
 		</head>
-		<body>";
-		$message .= "<p> Dear '{$name}'</p>";
-		$message .='<p> we want to help you reset your password! please <strong> <a href="'.base_url().'index.php/login/reset_password_form/'.$email.'/'.$email_code.'">Click here </a> </strong> to reset your password</p>';
-		$message .="<p>Thank you</p>";
-		$message .="</body></html>";
+		<body>';
+		$mail->Body.='<p> we want to help you reset your password! please <strong> <a href="'.base_url().'index.php/login/reset_password_form/'.$email.'/'.$email_code.'">Click here </a> </strong> to reset your password</p>';
+		$mail->Body .='<p>Thank Your </p>';
+		$mail->Body .='</body></html>';
+		// $this->email->message($message);
+		// $this->email->send();
 
-		$this->email->message($message);
-		$this->email->send();
+		$mail->send();
+
+
+		// $this->email->set_mailtype('html');
+		// $this->email->from($this->config->item('bot_email'),'reset password email');
+		// $this->email->to($email);
+		// $this->email->subject('Please reset your password');
+
+		// $message = "<!DOCTYPE html><html>
+		// <head>
+		// 	<title>Reset Password</title>
+		// </head>
+		// <body>";
+		// $message .= "<p> Dear '{$name}'</p>";
+		// $message .='<p> we want to help you reset your password! please <strong> <a href="'.base_url().'index.php/login/reset_password_form/'.$email.'/'.$email_code.'">Click here </a> </strong> to reset your password</p>';
+		// $message .="<p>Thank you</p>";
+		// $message .="</body></html>";
+
+		// $this->email->message($message);
+		// $this->email->send();
 	}
 
 	public function update_password()

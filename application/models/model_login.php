@@ -93,10 +93,10 @@ class Model_login extends CI_Model
 	public function update_password()
 	{
 		$email = $this->input->post('email');
-		echo $this->input->post('password')."<br>";
+		// $this->input->post('password')."<br>";
 		$password = sha1($this->config->item('salt').$this->input->post('new-password'));
 
-		echo $this->input->post('password')." hashed password <br>";
+		// $this->input->post('password')." hashed password <br>";
 
 		$sql = "UPDATE users SET password = '{$password}' WHERE email = '{$email}' LIMIT 1";
 		$this->db->query($sql);
