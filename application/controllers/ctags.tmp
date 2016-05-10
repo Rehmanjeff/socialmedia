@@ -1,0 +1,26 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_MOD_BY	Bostjan Mihoric	/ccompletion@gmail.com/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	/unofficial modification/
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	/unofficial modification/
+Ajax	ajax.php	3;"	class
+Upload	upload.php	6;"	class
+Welcome	welcome.php	3;"	class
+__construct	upload.php	8;"	function
+config	ajax.php	41;"	variable
+error	ajax.php	13;"	variable
+files	ajax.php	7;"	variable
+files	ajax.php	8;"	variable
+i	ajax.php	9;"	variable
+index	ajax.php	4;"	function
+index	upload.php	13;"	function
+index	welcome.php	5;"	function
+name	ajax.php	10;"	variable
+set_upload_options	ajax.php	40;"	function
+size	ajax.php	14;"	variable
+target_dir	ajax.php	27;"	variable
+target_file	ajax.php	28;"	variable
+tmp_name	ajax.php	12;"	variable
+type	ajax.php	11;"	variable

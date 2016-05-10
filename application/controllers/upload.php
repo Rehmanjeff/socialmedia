@@ -21,11 +21,6 @@ class Upload extends CI_Controller {
                 
                 $config['upload_path']          = './uploads/'; #$this->config->item('base_url').
                 $config['allowed_types']        = 'gif|jpg|png|jpeg';
-                // $config['max_size']             = 100;
-                // $config['max_width']            = 1024;
-                // $config['max_height']           = 768;
-
-                // $this->load->library('upload', $config);
 
                 $this->upload->initialize($config);
                 
@@ -41,30 +36,17 @@ class Upload extends CI_Controller {
                 {
                         $session_data = $this->session->userdata('logged_in');
                         $id =  $session_data['id'];
-
+                        
                         $image_name = $this->upload->data('file_name');
                         $this->model_edit->update_dp($id, $image_name);
 
-                        // $img_name = array('image' => $image_name );
-                        // $this->session->set_userdata('img_name');
-
                         $this->session->set_userdata('image', $image_name);
 
-                        // $data['img'] = base_url().'upload/'.
-                        /*if ($image_name) 
-                        {
-                                $data['img'] = $image_name;
-                                $this->load->view('layouts/header');
-                                $this->load->view('home_page',$data);
-                                $this->load->view('layouts/footer');
-                        }
-                        else
-                        {
-                                $error = "Couldn't fetch image";
-                                $this->load->view('layouts/header');
-                                $this->load->view('home_page',$error);
-                                $this->load->view('layouts/footer');
-                        }*/
+
+                        $data = array('upload_data' => $this->upload->data());
+
+                        echo json_encode($data);
+
                         redirect("account");
                 }
         }

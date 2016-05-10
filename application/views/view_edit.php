@@ -27,7 +27,7 @@
 					jQuery.ajax(
 					{
 						type: "POST",
-						url: "<?php echo base_url(); ?>" + "index.php/edit/update_user",
+						url: "<?php echo base_url(); ?>" + "edit/update_user",
 						dataType: 'json',
 						data: {hiddenValue : hiddenValue,'user-name': display_name, username: username, email : email},
 

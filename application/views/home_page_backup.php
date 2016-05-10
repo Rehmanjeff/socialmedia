@@ -43,33 +43,39 @@
 				// {?>
 				<div class="row">
 				  <div class="col-xs-4">
-					
-					<?php 
-					// print_r($session_data);
-					if (isset($session_data['image'])) 
-					{
-						// echo "Successfully Uploaded DP";
-						// echo $_SESSION['image'];
-					?>
-					 
-					<img src="<?php echo base_url().'/../uploads/'.$session_data['image']; ?>" width = "170" height="170"/>
-					  	</br>
-					  	<?php
-					  } 
-					  else
-					  	{
-					  		echo "Can't find requested picture from upload controller";
-					  		}?>				
+					<div class = "upload-image-messages"></div>
 
-					<?php if(isset($error))echo $error;
-					// echo form_open_multipart('upload/do_upload');?>
-					<form enctype="multipart/form-data" accept-charset="utf-8" name="formname" id="formname"  method="post" action="">
-					
-					<input type="file" name="userfile"/>
-					<br />
-					<input type="submit" name="submit" value="upload" />
+					<div class = "col-md-6">
+				        <!-- Generate the form using form helper function: form_open_multipart(); -->
+				        <?php echo form_open_multipart('upload/do_upload', array('class' => 'upload-image-form'));?>
+				            <input type="file" multiple = "multiple" accept = "image/*" class = "form-control" name="uploadfile[]" size="20" /><br />
+				            <input type="submit" name = "submit" value="Upload" class = "btn btn-primary" />
+				        </form>
 
-					</form>
+				        <script>                   
+				        jQuery(document).ready(function($) {
+
+				            var options = {
+				                beforeSend: function(){
+				                    // Replace this with your loading gif image
+				                    $(".upload-image-messages").html('<p><img src = "<?php echo base_url() ?>images/loading.gif" class = "loader" /></p>');
+				                },
+				                complete: function(response){
+				                    // Output AJAX response to the div container
+				                    $(".upload-image-messages").html(response.responseText);
+				                    $('html, body').animate({scrollTop: $(".upload-image-messages").offset().top-100}, 150);
+				                   
+				                }
+				            }; 
+				            // Submit the form
+				            $(".upload-image-form").ajaxForm(options); 
+
+				            return false;
+				           
+				        });
+				        </script>
+				    </div>
+					
 				  <hr>
 				  </div>
 				  <div class="col-xs-6">
