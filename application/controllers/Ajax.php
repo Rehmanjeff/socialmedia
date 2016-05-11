@@ -27,7 +27,18 @@ class Ajax extends CI_Controller {
 				if (move_uploaded_file($uploades_img_temp_name, $target_dir.$actual_image_name)) {
 					//echo $_FILES["profile_img"]["name"];
 					$this->session->set_userdata('main_temp', $target_dir.$actual_image_name);
-					echo $filename;
+
+
+                        $session_data = $this->session->userdata('logged_in');
+                        $id =  $session_data['id'];
+                        // $imagename = $filename;
+                        // after insertion in DB it doesn't come back
+                        $result = $this->model_edit->update_dp($id, $actual_image_name);
+
+                        	
+								echo $filename;
+                        
+
 				}else{
 					echo "Sorry, there was an error uploading your file.";
 				}

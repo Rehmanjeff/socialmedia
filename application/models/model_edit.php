@@ -84,14 +84,34 @@ class Model_edit extends CI_Model
     	$this->db->set("images", $image_name);
 	    $this->db->where("user_id", $id);
 	    $this->db->update("users");
-	    $row = $this->db->affected_rows();
+	    $row = $this->db->row();
 
-		if ($row == 1) {
-			return $image_name;
+		if ($row == 1) 
+		{
+			return TRUE; #$row
 		}
 		else
 		return FALSE;
 		
    } 
+
+   public function fetch_image($id)
+   {
+   	$query = $this->db->get_where('users',array('user_id' => $id ));
+	// $query = $this->db->get_where('users', array('user_id' => $id ));
+
+   	if ($query) {
+
+   		$query = $query->row();
+   		$query = $query->images;
+   		// echo $query;
+   		// die();
+   		return $query;
+   	}
+   	else
+   	{
+   		return FALSE;
+   	}
+   }
 }
 ?>
