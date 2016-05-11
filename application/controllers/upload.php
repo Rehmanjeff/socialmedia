@@ -23,8 +23,8 @@ class Upload extends CI_Controller {
                         $id =  $session_data['id'];
                         // print_r($formData);
                         // die();
-                 $data['results'] = $this->model_edit->update_dp();
-    $this->output->set_output(json_encode($data));
+                $data['results'] = $this->model_edit->update_dp();
+                $this->output->set_output(json_encode($data));
         }
 }
 ?>

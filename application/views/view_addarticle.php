@@ -17,47 +17,6 @@
 	<?php include('navbar.php'); 
 	?>
 </div>
-<script type="text/javascript">
-
-	/*		// Ajax post
-			$(document).ready(function()
-			{
-				window.alert("Entered into the function ");
-
-				$("#submit").click(function(event)
-				{
-					event.preventDefault();
-					var hiddenValue = $("#hiddenValue").val();
-                	alert(hiddenValue);
-                	var title = $("input#title").val();
-					var select = $("input#catagory").val();
-					var article = $("input#articletext").val();
-					jQuery.ajax(
-					{
-						type: "POST",
-						url: "<?php echo base_url(); ?>" + "index.php/add_post/submit_post",
-						dataType: 'json',
-						data: {hiddenValue : hiddenValue, catagory: catagory, title: title, articletext : articletext},
-
-						success: function(res)
-						{
-							// console.log(res);
-							// window.alert("i got some data ");
-							if (res)
-							{
-								// window.alert("Read and sent successfully ");
-								// Show Entered Value
-								jQuery("div#result").show();
-								// jQuery("div#hiddenValue").show();
-								// jQuery("div#display_name").html(res.display_name);
-								// jQuery("div#username").html(res.username);
-								// jQuery("div#email").html(res.email);
-							}
-						}
-					});
-				});
-			});*/
-		</script>
 <div class="container">
 <?php 
 if(isset($error))
@@ -104,17 +63,20 @@ if(isset($error))
 				    }
 				    else{
 				        document.getElementById("admDivCheck").style.display = "none";
-				    }}
+				    }
+				}
 			</script> 
 
 
 			       <select name="catagory_select" class="selectpicker form-control" style=" width: 150px;" onchange='admSelectCheck(this);' required> 
 				    <option>Select Catagory</option>  
 				    <?php
+				    if (isset($query)) {
+				    
 						foreach ($query->result() as $key):
 				    ?>
 				    <option value="<?php echo $key->cat_id; ?>"><?php echo $key->cat_name; ?></option>
-				    <?php endforeach; ?>
+				    <?php endforeach; } ?>
 				    <option id="admOption">others</option>
 				  </select>
 

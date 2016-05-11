@@ -34,10 +34,8 @@ class Ajax extends CI_Controller {
                         // $imagename = $filename;
                         // after insertion in DB it doesn't come back
                         $result = $this->model_edit->update_dp($id, $actual_image_name);
+                        echo $filename;
 
-                        	
-								echo $filename;
-                        
 
 				}else{
 					echo "Sorry, there was an error uploading your file.";

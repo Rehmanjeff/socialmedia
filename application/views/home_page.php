@@ -24,19 +24,21 @@
                 data: formData,
                 async: false,
                 success: function(data) {
-                    alert(data);
+                    // alert(data);
 					//$('.img_pre').attr('src', '<?php echo base_url(); ?>uploads/'+data);
 					setTimeout(function () { 
+
 					$('.img_pre').attr('src', data);
 						$('.dltbtn').show();
 						}, 3000);
 					//$('.img_pre').attr('src',data);
                 },
-				error: function(data){
-					alert(data);
-                console.log("error");
-                console.log(data);
-				   alert("Error :"+data);
+				error: function(data)
+				{
+					// console.log(data);
+                	console.log("error");
+                	// console.log(data);
+				    alert("Error :"+data);
                 },
                 cache: false,
                 contentType: false,
@@ -50,61 +52,10 @@
 	</script>
 	
 	<script type="text/javascript">
- // $(document).ready(function() {
- 	// alert("second functon");
-	// 		$('.dltbtn').click(function() {
-	//    if(confirm('Are You Sure Wants To Delete Image !!')){
-	// 	$.ajax({
-	// 		url: '<?php echo base_url(); ?>index.php/ajax/deleteimg/',
- //                type: 'POST',
-	// 			 cache: false,
- //                success: function(data) {
-	// 			//alert(data);
-	// 			$('.img_pre').attr('src','<?php echo base_url();?>uploads/upload_profile.jpg');
- //                    $('.dltbtn').hide();
- //                },
-	// 			error: function(data)
-	// 			{
- //                console.log("error");
- //                console.log(data);
-	// 			   alert("Error :"+data);
- //                }
- //            });
-	// 	}
-	// 	});
-			
-	// });
-</script>
+	</script>
+	
 	<script type="text/javascript">
- // $(document).ready(function() {
- // 	alert("thirddddddddd");
-	// 		$('#btnsubmit').click(function() 
-	// 		{
-	// 			alert("i got submitted");
-	//    			event.preventDefault();
- //                 var userfile = $("input#pfile").val();
- //                 			alert("uploading");
-	// 	$.ajax({
-	// 		url: '<?php echo base_url(); ?>upload/do_upload',
- //                type: 'POST',
-	// 			 cache: false,
-	// 			 data: {userfile: userfile},
- //                success: function(data) {
-	// 			//alert(data);
-	// 			$('.img_pre').attr('src', "<?php echo base_url().'/../uploads/'.$session_data['image']; ?>");
- //                    $('.dltbtn').hide();
- //                },
-	// 			error: function(data)
-	// 			{
- //                console.log("error");
- //                console.log(data);
-	// 			   alert("Error :"+data);
- //                }
- //            });
-	// 	});
-			
-	// });
-</script>
+	</script>
 <!-- 
 	After user press submit button this function will send data to store in db
 -->
@@ -137,13 +88,10 @@
 								</tr>
 								<tr>
 									<th colspan="2">
+									<br>
 									<input type="file" name="userfile" id="pfile" required="required" />
 									</th>
-								</tr>						
-								<tr>
-									<td colspan="2">
-										<input type="submit" value="Submit" name="btnadd" id="btnsubmit"  />
-									</td>
+								</tr>	
 									</table>
 						    </div>
 						   <!--  -->

@@ -76,26 +76,25 @@ class Article extends CI_Controller
 
 	public function submit_article()
 	{
-		$this->form_validation->set_rules('title', 'Title', 'required');
-        $this->form_validation->set_rules('articletext', 'Article Text', 'required');
+		$this->form_validation->set_rules('title', 'Title', 'min_length[5]|max_length[100]|required');
+        $this->form_validation->set_rules('articletext', 'Article Text', 'min_length[5]|max_length[1000]|required');
     
 
         if ($this->form_validation->run() === FALSE)
 		{
 
-			// $this->load->view('layouts/header');
-			// $this->load->view('view_addarticle');
-			// $this->load->view('layouts/footer');
-			redirect('article');
+			$this->load->view('layouts/header');
+			$this->load->view('view_addarticle');
+			$this->load->view('layouts/footer');
+			// redirect('article');
 		}
 		else
 		{
 			$title = $this->input->post('title');
-
 			$input_cat = $this->input->post('cat');
 			
 			//If input field has some value then add that value first then show it over view page
-			if (isset($input_cat)) 
+			if (!empty($input_cat)) 
 			{
 				$result = $this->model_article->add_cat($input_cat);
 				if ($result) {
@@ -106,8 +105,11 @@ class Article extends CI_Controller
 					$result = $this->model_article->add_cat_art($cat_id);
 				}
 			}
+			
 			else
+			{
 				$result = $this->model_article->add_article();
+			}
 			
 			if(!$result)
             {

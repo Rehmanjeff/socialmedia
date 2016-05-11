@@ -80,13 +80,13 @@
 				// Display Result Using Ajax
 				echo "<div id='result' style='display: none'>";
 
-				echo "<div class='alert alert-success' role='alert'>Well done! You successfully read this important alert message....</div>";
+				echo "<div class='alert alert-success' role='alert'>Success ! Data Updated</div>";
 				echo "<div id='content_result'>";
 				echo "<h3 id='result_id'>You have submitted these values</h3><br/><hr>";
 				echo "<div id='result_show'>";
-				echo "<label class='label_output'>User ID :<div id='hiddenValue'> </div></label>";
-				echo "<br>";
-				echo "<br>";
+				// echo "<label class='label_output'>User ID :<div id='hiddenValue'> </div></label>";
+				// echo "<br>";
+				// echo "<br>";
 				echo "<label class='label_output'>Display Name :<div id='display_name'> </div></label>";
 				echo "<br>";
 				echo "<br>";

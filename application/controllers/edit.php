@@ -52,7 +52,7 @@ class Edit extends CI_Controller
 					$update = $this->model_edit->update_record($username, $name, $email, $id);
 
 					if ($update)
-					{?>
+					{ ?>
 
 						<?php
 						$data = array(
@@ -71,7 +71,7 @@ class Edit extends CI_Controller
 					}
 
 					else
-					{?>
+					{ ?>
 						<div class="alert alert-danger" role="alert">Oh snap! Change a few things up and try submitting again....</div>
 						<?php
 						$this->load->view('layouts/header');

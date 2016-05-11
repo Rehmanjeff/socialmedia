@@ -83,9 +83,11 @@ class Model_edit extends CI_Model
   
     	$this->db->set("images", $image_name);
 	    $this->db->where("user_id", $id);
-	    $this->db->update("users");
-	    $row = $this->db->row();
+	    $row = $this->db->update("users");
 
+	    // $row = $row->row();
+		// print_r($row);
+		// die();
 		if ($row == 1) 
 		{
 			return TRUE; #$row
