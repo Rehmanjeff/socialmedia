@@ -77,12 +77,20 @@
 								<tr>
 									<th colspan="2">
 										<img class="img_pre" src="<?php
+										$no_img = "upload_profile.png";
+										
 										if(isset($img))
 											{
-												echo base_url();?>uploads/<?php echo $img; ?><?php }
+												echo base_url(); ?>uploads/<?php echo $img; 
+											}
 										else
-										{ 
-										echo base_url()?>upload_profile.png <?php } ?>" width="170" height="150"/>
+											{ 
+												echo base_url(); ?>uploads/<?php echo $no_img; 
+											} 
+										if(!$img){echo $no_img;}
+
+										?>" 
+										width="170" height="150"/>
 										<!-- <img src="<?php echo base_url();?>uploads/Delete_image.png" class="dltbtn" style="display:none" /> -->
 									</th>
 								</tr>

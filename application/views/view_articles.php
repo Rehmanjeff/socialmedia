@@ -50,7 +50,7 @@
 
 		 	 <div class="col-md-2 col-md-offset-5">
 		 	 	<?php 
-		 	 	if(isset($data)) 
+		 	 	if(!empty($data)) 
 		 	 	{
 		 	 		foreach ($data->result() as $key): ?>
 		 	 		<label for="">Title: </label><?php echo $key->title; ?>

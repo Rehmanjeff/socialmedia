@@ -62,7 +62,7 @@ class Article extends CI_Controller
 		// echo $catagory_id;
 		// die();
 
-		if ($display) 
+		if (!empty($display)) 
 		{
 			$this->load->view('layouts/header');
 			$this->load->view('view_only', $display);

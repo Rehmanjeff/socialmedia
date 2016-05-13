@@ -34,8 +34,13 @@ Class User_Authentication extends CI_Controller
 
 			if ($this->form_validation->run() == FALSE) 
 			{
+				$this->session->set_flashdata('message', 'Authentication failed');
+
+				redirect(site_url('User_authentication'), 'refresh'); 
+
+
 				// $this->load->view('layouts/header');
-				$this->load->view('login_form');
+				// $this->load->view('login_form');
 				// $this->load->view('layouts/footer');
 			} 
 			
@@ -50,26 +55,23 @@ Class User_Authentication extends CI_Controller
 
 							break;
 						case 'incorrect_password':
-							echo "Error loging in, password not correct...!";
-							// $this->load->view('layouts/header');
-							$this->load->view('login_form');
-							// $this->load->view('layouts/footer'); 
+							// echo "Error loging in, password not correct...!";
+							$this->session->set_flashdata('message', 'Error loging in, password not correct...!');
+							redirect(site_url('User_authentication'), 'refresh'); 
 
 							break;
 
 						case 'not_activated':
-							echo "Please activate your account before logging in...!";
-							// $this->load->view('layouts/header');
-							$this->load->view('login_form');
-							// $this->load->view('layouts/footer'); 
+							// echo "Please activate your account before logging in...!";
+							$this->session->set_flashdata('message', 'Please activate your account before logging in...!');
+							redirect(site_url('User_authentication'), 'refresh'); 
 
 							break;
 
 						case 'incorrect_username':
-							echo "Error loging in, password/username not correct...!";
-							// $this->load->view('layouts/header');
-							$this->load->view('login_form');
-							// $this->load->view('layouts/footer'); 
+							// echo "Error loging in, password/username not correct...!";
+							$this->session->set_flashdata('message', 'Error loging in, password/username not correct...!');
+							redirect(site_url('User_authentication'), 'refresh'); 
 
 							break;
 						
