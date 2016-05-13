@@ -26,12 +26,12 @@
 		 	 	<?php 
 		 	 	if (!empty($data)) {
 		 	 		foreach ($data->result() as $key): ?>
-		 	 		<label for="">Title: </label><?php echo $key->title; ?>
+		 	 		<label for="">Title: &nbsp;</label><b><?php echo $key->title; ?></b>
 		 	 		<br>
 		 	 		<label for="">Article: </label>
-		 	 		<p>
+		 	 		<pre>
 		 	 			<?php echo $key->article; ?>
-		 	 		</p>
+		 	 		</pre>
 		 	 		<br>
 		 	 		<hr>
 		 	 		<?php endforeach; } else{ echo "Nothing to display";}?>

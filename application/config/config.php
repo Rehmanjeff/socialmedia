@@ -510,7 +510,7 @@ $config['rewrite_short_tags'] = FALSE;
 $config['proxy_ips'] = '';
 $config['salt'] = '$u%r)^*s';
 $config['admin'] = "rehmank360@gopro.com";
-$config['bot_email'] = "admin@testsite.com";
+$config['bot_email'] = "admin@socialmedia.com";
 
 
 $config['upload_path'] = './uploads/';

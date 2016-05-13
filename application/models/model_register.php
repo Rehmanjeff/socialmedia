@@ -101,7 +101,7 @@ class Model_register extends CI_Model
 		$mail->SMTPSecure = 'ssl';
 		$mail->Port = 465;
 
-		$mail->From = 'habib.rehman@jotixtech.com';
+		$mail->From = 'randomcheck@socialmedia.org';
 		$mail->FromName = 'Admin';
 
 		// $email = $this->session->userdata('email');
