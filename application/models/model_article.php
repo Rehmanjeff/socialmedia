@@ -6,7 +6,19 @@ class Model_article extends CI_Model
 		parent::__construct();
 		$session_data = $this->session->userdata('logged_in');
 	}
+public function fetch_article($cat)
+{
+	$query = "SELECT * FROM user_articles WHERE cat_id_fk = {$cat}";
+	$query = $this->db->query($query);
 
+	if ($query) {
+		return $query;
+	}
+	else
+	{
+		return FALSE;
+	}
+}
 	public function fetch_catagory($user_id)
 	{
 		$query = "SELECT * FROM catagory WHERE user_id_fk = {$user_id} "; 
@@ -32,7 +44,25 @@ class Model_article extends CI_Model
 
 			return FALSE;
 	}
+	
+	public function add_article_img($cat_id, $image_name) 
+	{
+  
+    	$this->db->set("article_images", $image_name);
+	    $this->db->where("cat_id_fk", $cat_id);
+	    $row = $this->db->update("user_articles");
 
+	    // $row = $row->row();
+		// print_r($row);
+		// die();
+		if ($row == 1) 
+		{
+			return TRUE; #$row
+		}
+		else
+		return FALSE;
+		
+   } 
 	public function display($catagory_id)
 	{
 		$sql = "SELECT * FROM user_articles WHERE cat_id_fk = '{$catagory_id}' ";

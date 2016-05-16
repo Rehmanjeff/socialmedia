@@ -25,7 +25,7 @@
 				  	</label><br>
 				  	<a href="<?php echo base_url();?>article"><input class="btn btn-primary " value="Add Article" type="submit" style="/*float:right;*/" /></a>
 				  	<br><br><br><br>
-<label for="">
+					<label for="">
 				  		View Articles by Catagory: 
 				  	</label>
 <!-- 		<div class="col-md-4"> -->

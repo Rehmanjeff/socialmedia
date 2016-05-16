@@ -14,10 +14,26 @@ class Article extends CI_Controller
 // die();
 		if ($session_data) 
 		{
-			$catagory['query'] = $this->model_article->fetch_catagory($session_data['id']);
+			
+			$catagory = $this->model_article->fetch_catagory($session_data['id']);
+			$cat = $catagory->row();
+			$cat = $cat->cat_id;
+			// print_r($cat);
+			// die();
+			// it should take cat_id, and cat_id should be extracted from users table
+			$image = $this->model_article->fetch_article($cat);
+			$image = $image->row();
+			$image = $image->article_image;
+			// echo $cat."<br>";
+			// echo $image;
+			// die();
+
+			$data = array(
+				'query' => $catagory,
+				'img' => $image );
 
 			$this->load->view('layouts/header');
-			$this->load->view('view_addarticle',$catagory);
+			$this->load->view('view_addarticle',$data);
 			$this->load->view('layouts/footer');
 		}
 		else
@@ -35,10 +51,28 @@ class Article extends CI_Controller
 // die();
 		if ($session_data) 
 		{
-			$catagory['query'] = $this->model_article->fetch_catagory($session_data['id']);
+			$catagory = $this->model_article->fetch_catagory($session_data['id']);
+			$cat = $catagory->row();
+			$cat = $cat->cat_id;
+			// print_r($cat);
+			// die();
+			// it should take cat_id, and cat_id should be extracted from users table
+			$image = $this->model_article->fetch_article($cat);
+			$image = $image->row();
+			$image = $image->article_image;
+			// echo $cat."<br>";
+			// echo $image;
+			// die();
+
+			$data = array(
+				'query' => $catagory,
+				'img' => $image );
+
+			// print_r($data);
+			// die();
 
 			$this->load->view('layouts/header');
-			$this->load->view('view_articles',$catagory);
+			$this->load->view('view_articles',$data);
 			$this->load->view('layouts/footer');
 		}
 		else
@@ -98,8 +132,8 @@ class Article extends CI_Controller
 			{
 				$result = $this->model_article->add_cat($input_cat);
 				if ($result) {
-					// print_r($result);
-					// die();
+					print_r($result);
+					die();
 					// $result = $result->db->row();
 					$cat_id = $result;
 					$result = $this->model_article->add_cat_art($cat_id);

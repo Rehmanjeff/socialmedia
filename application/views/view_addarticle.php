@@ -81,11 +81,102 @@ if(isset($error))
 				  </select>
 
 				  <br>
+
+				  <script type="text/javascript">
+				    $(document).ready(function() {
+				    	alert('first function');
+							$('#pfile').change(function() {
+								$("form#frm1").submit();
+								alert('yaba daba do');
+							});
+							
+							$('form#form1').trigger('submit');
+
+					        $("form#frm1").submit(function() {
+								alert(' form submitted');
+							$('.img_pre').attr('src','<?php echo base_url(); ?>uploads/ProgressBar.gif');
+				            var formData = new FormData($(this)[0]);
+				            $.ajax({
+				                url: '<?php echo base_url(); ?>ajax/article_image',
+				                type: 'POST',
+				                data: formData,
+				                async: false,
+				                success: function(data) {
+				                    // alert(data);
+									//$('.img_pre').attr('src', '<?php echo base_url(); ?>uploads/'+data);
+									setTimeout(function () { 
+
+									$('.img_pre').attr('src', data);
+										// $('.dltbtn').show();
+										}, 3000);
+									//$('.img_pre').attr('src',data);
+				                },
+								error: function(data)
+								{
+									// console.log(data);
+				                	console.log("error");
+				                	// console.log(data);
+								    alert("Error :"+data);
+				                },
+				                cache: false,
+				                contentType: false,
+				                processData: false
+				            });
+
+				            return false;
+				        });
+
+				    });
+					</script>
+				    
+				    <label for="">Select Image:</label><br>
+				    <div class="col-xs-4">
+				  		<form name="frm1" id="frm1" action="#" method="post" enctype="multipart/form-data">
+						    <div>
+								<table>
+								<?php //echo $img;
+										//	die(); ?>
+									<tr>
+										<th colspan="2">
+											<img class="img_pre img-responsive" src="<?php
+											$no_img = "upload_article_image.png";
+											
+											if(isset($img))
+												{
+													echo base_url(); ?>uploads/<?php echo $img; 
+												}
+											else
+												{ 
+													echo base_url(); ?>uploads/<?php echo $no_img; 
+												} 
+											if(!$img){echo $no_img;}
+
+											?>" 
+											width="170" height="150"/>
+											<!-- <img src="<?php echo base_url();?>uploads/Delete_image.png" class="dltbtn" style="display:none" /> -->
+										</th>
+									</tr>
+									<tr>
+										<th colspan="2">
+										<br>
+										<input type="file" name="userfile" id="pfile" required="required" />
+										</th>
+									</tr>	
+								</table>
+								<br>
+						    </div>
+						   <!--  -->
+						</form>
+						<label for="sel1">Article:</label>
+				  </div>
+					
 				  <div id="admDivCheck" style="display: none;">
 					<input type="text" placeholder="Enter Catagory Name" class="form-control"  name="cat" id="color" style='width: 170px;'/>
 					</div>
 			     <br>
-				<label for="sel1">Article:</label>
+			     <br>
+				
+				<br>
 				<textarea class="form-control" name="articletext" id="" cols="80" rows="10"></textarea>
 				<br>
 				<input class="btn btn-primary "  value="Submit Article" id="submit" type="submit" style="float:right;" />
