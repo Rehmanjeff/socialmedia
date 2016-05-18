@@ -63,10 +63,27 @@ public function fetch_article($cat)
 		return FALSE;
 		
    } 
+   
+   public function get_catagory_id($catagory_id)
+   {
+		$sql = "SELECT cat_id FROM catagory WHERE cat_name = '{$catagory_id}'";
+		$result = $this->db->query($sql);
+
+		if ($result) {
+			return $result;
+		}
+		else
+		{
+			echo "Coudln't fetch this catagory";
+		}
+
+   }
+
 	public function display($catagory_id)
 	{
-		$sql = "SELECT * FROM user_articles WHERE cat_id_fk = '{$catagory_id}' ";
-		$result = $this->db->query($sql);
+
+		$query = "SELECT * FROM user_articles WHERE cat_id_fk = '{$catagory_id}' ";
+		$result = $this->db->query($query);
 		return $result;
 	}
 

@@ -13,3 +13,44 @@ p.capitalize
     display: table-cell;
     max-width: 220px;
 }
+.td-module-data
+{
+   
+   padding: 10px 20px 17px 20px;
+}
+#article_image
+{
+	width: 640px;
+	height: 360px;
+	margin-bottom: -80px;
+}
+.text_article
+{
+	background-color: #fff; 
+	margin-bottom: 30px;
+	margin-left: 30px;
+}
+ul {
+
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}

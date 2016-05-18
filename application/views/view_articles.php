@@ -33,18 +33,19 @@
 
 			<!-- <?php form_open('display_articles', array('id' => 'recommendForm'));?> -->
 			 		
-			 	<form action="display_articles" method="post">
+			 	<!-- <form action="display_articles" method="post">
 			 	<select name="catagory_select" class="selectpicker form-control" style=" width: 150px;"> 
-				    <option>Select Catagory</option>  
+				    <option>Select Catagory</option>   -->
+				<ul>
 				    <?php
 						foreach ($query->result() as $key):
 				    ?>
-				    <option value="<?php echo $key->cat_id; ?>"> <?php echo $key->cat_name; ?></option>
+				    <li><a href="<?php echo 'display_articles/'.$key->cat_name; ?>"><?php echo $key->cat_name; ?></a></li> <!-- value="<?php echo $key->cat_id; ?>"> <?php echo $key->cat_name; ?></option> -->
 				    <?php endforeach; ?>
-				</select>
+				</ul>
 				
-				<br>
-				<input class="btn btn-primary" type="submit" value="Submit">
+				<!-- <br> -->
+				<!-- <input class="btn btn-primary" type="submit" value="Submit"> -->
 			</form>
 		<!-- </div> -->
 

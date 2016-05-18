@@ -113,16 +113,27 @@ class Article extends CI_Controller
 
 	public function display_articles()
 	{
-		$catagory_id = $this->input->post('catagory_select');
-		$display['data'] = $this->model_article->display($catagory_id);
-		
-		/*foreach ($display as $key) {
-			print_r($key);
+		$catagory_id;
+		// = $this->input->post('catagory_select');
+
+
+		if ($this->uri->segment(3) === FALSE)
+		{
+		        $catagory_id = 0;
 		}
-		die();*/
-		// print_r($display);
-		// echo $catagory_id;
-		// die();
+		else
+		{
+		        $catagory_id = $this->uri->segment(3);
+		        // echo $catagory_id;
+		        // die();
+		}
+
+		$catagory_id = $this->model_article->get_catagory_id($catagory_id);
+		$catagory_id = $catagory_id->row();
+		$catagory_id = $catagory_id->cat_id;
+
+		$display['data'] = $this->model_article->display($catagory_id);
+	
 
 		if (!empty($display)) 
 		{
