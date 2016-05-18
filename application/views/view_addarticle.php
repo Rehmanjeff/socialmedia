@@ -36,11 +36,20 @@ if(isset($error))
 			?>
 		</div>
 		<div class="col-xs-6">
-			<?php		
-				echo validation_errors(); 
-				echo form_open('article/submit_article'); #'add_post/submit_post'
-			?>
 
+			<?php		
+			$message = $this->session->flashdata('message');
+			
+			if (isset($message)) 
+			{
+				echo "<div class='alert alert-danger' role='alert'>";
+				echo $message;
+				echo "</div>";
+			}
+				echo validation_errors(); 
+				//echo form_open( method="post" enctype="multipart/form-data" 'article/submit_article'); #'add_post/submit_post'
+			?>
+<form action="article/submit_article" method="post" enctype="multipart/form-data">
 			<div class="form-group">
 			<input type="hidden" name="hiddenValue" id="hiddenValue" value="<?php echo $session_data['id']; ?>">
 				<label for="sel1">Title:</label>
@@ -82,7 +91,7 @@ if(isset($error))
 
 				  <br>
 
-				  <script type="text/javascript">
+				  <!-- <script type="text/javascript">
 				    $(document).ready(function() {
 				    	alert('first function');
 							$('#pfile').change(function() {
@@ -127,16 +136,16 @@ if(isset($error))
 				        });
 
 				    });
-					</script>
+					</script> -->
 				    
 				    <label for="">Select Image:</label><br>
 				    <div class="col-xs-4">
-				  		<form name="frm1" id="frm1" action="#" method="post" enctype="multipart/form-data">
+				  		<!-- <form name="frm1" id="frm1" action="article/submit_article" method="post" enctype="multipart/form-data"> -->
 						    <div>
 								<table>
 								<?php //echo $img;
 										//	die(); ?>
-									<tr>
+									<!-- <tr>
 										<th colspan="2">
 											<img class="img_pre img-responsive" src="<?php
 											$no_img = "upload_article_image.png";
@@ -154,19 +163,26 @@ if(isset($error))
 											?>" 
 											width="170" height="150"/>
 											<!-- <img src="<?php echo base_url();?>uploads/Delete_image.png" class="dltbtn" style="display:none" /> -->
-										</th>
-									</tr>
+										<!-- </th>
+									<!-- </tr> -->
 									<tr>
 										<th colspan="2">
 										<br>
-										<input type="file" name="userfile" id="pfile" required="required" />
+										<?php //echo $error;?>
+
+<?php //echo form_open_multipart('upload/do_upload');?>
+
+										<input type="file" name="userfile" size="20" />
+
+										<br />
+								<!-- <input type="file" name="userfile" id="pfile" required="required" /> -->
 										</th>
 									</tr>	
 								</table>
 								<br>
 						    </div>
 						   <!--  -->
-						</form>
+						<!-- </form> -->
 						<label for="sel1">Article:</label>
 				  </div>
 					
@@ -179,9 +195,11 @@ if(isset($error))
 				<br>
 				<textarea class="form-control" name="articletext" id="" cols="80" rows="10"></textarea>
 				<br>
-				<input class="btn btn-primary "  value="Submit Article" id="submit" type="submit" style="float:right;" />
+				<input class="btn btn-primary "  value="Submit Article" name="" id="" type="submit" style="float:right;" />
 				</div>
 			</form>
+			<br>
+			<br>
 		</div>
 	</div>
 </div>

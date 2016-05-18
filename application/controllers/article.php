@@ -44,6 +44,34 @@ class Article extends CI_Controller
 		}
 	}
 
+	public function add_article_image()
+	{
+		
+
+        if ( ! $this->upload->do_upload('userfile'))
+        {
+                        $error = array('error' => $this->upload->display_errors());
+
+                        $this->load->view('upload_form', $error);
+        }
+        else
+        {
+            $data = array('upload_data' => $this->upload->data());
+            $cat_id = $this->input->post('catagory_select');
+
+		    $result = $this->model_article->add_article_img($cat_id, $actual_image_name);
+		    if ($result) {
+		    	redirect('account');
+		    }
+		    else
+		    {
+		    	echo "Error, can't add picture please try again";
+		    }
+        }
+
+		
+	}
+
 	public function articles_view()
 	{
 		$session_data = $this->session->userdata('logged_in');
@@ -116,33 +144,57 @@ class Article extends CI_Controller
 
         if ($this->form_validation->run() === FALSE)
 		{
-
-			$this->load->view('layouts/header');
-			$this->load->view('view_addarticle');
-			$this->load->view('layouts/footer');
-			// redirect('article');
+			$this->session->set_flashdata('message', 'Form validation Failed: Minimum character should be 5 per field (all required)');
+			redirect('article');
 		}
+
 		else
 		{
+			 	$config['upload_path']          = './uploads/article_img';
+                $config['allowed_types']        = 'gif|jpg|png';
+                $data;
+
+                $this->load->library('upload', $config);
+
+                if ( ! $this->upload->do_upload('userfile'))
+                {
+                        $error = array('error' => $this->upload->display_errors());
+
+                        // $this->load->view('upload_form', $error);
+
+            // print_r($error);
+            // die();
+                }
+                else
+                {
+                        $data = array('upload_data' => $this->upload->data());
+
+                        // $this->load->view('upload_success', $data);
+
+            // print_r($data);
+            // die();
+                }
+            $image_path = $this->upload->data('file_name');    
 			$title = $this->input->post('title');
-			$input_cat = $this->input->post('cat');
-			
+			$input_cat = $this->input->post('cat');			
+			$cat_id = $this->input->post('catagory_select');
+
 			//If input field has some value then add that value first then show it over view page
 			if (!empty($input_cat)) 
 			{
 				$result = $this->model_article->add_cat($input_cat);
 				if ($result) {
-					print_r($result);
-					die();
+					// print_r($result);
+					// die();
 					// $result = $result->db->row();
 					$cat_id = $result;
-					$result = $this->model_article->add_cat_art($cat_id);
+					$result = $this->model_article->add_cat_art($cat_id,$image_path);
 				}
 			}
 			
 			else
 			{
-				$result = $this->model_article->add_article();
+				$result = $this->model_article->add_article($image_path);
 			}
 			
 			if(!$result)

@@ -56,19 +56,19 @@ body {
 	
 	?>
 	<?php
-$message = $this->session->flashdata('message');
-if (isset($message)) {
-	echo "<div class='alert alert-danger' role='alert'>";
-	echo $message;
-	echo "</div>";
-}
-	if (isset($message_display)) 
-	{
-		echo "<div class='alert alert-danger' role='alert'>";
-		echo $message_display;
-		echo "</div>";
-	}
-?>
+		$message = $this->session->flashdata('message');
+		if (isset($message)) {
+			echo "<div class='alert alert-danger' role='alert'>";
+			echo $message;
+			echo "</div>";
+		}
+			if (isset($message_display)) 
+			{
+				echo "<div class='alert alert-danger' role='alert'>";
+				echo $message_display;
+				echo "</div>";
+			}
+		?>
 		<h2 style="margin-left: 12px;">Please Signin</h2>
 		<?php echo form_open('user_authentication/user_login_process', array('class' => 'form-signin' ));?>
 		<div class="form-group">

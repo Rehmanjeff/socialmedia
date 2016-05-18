@@ -512,9 +512,9 @@ $config['salt'] = '$u%r)^*s';
 $config['admin'] = "rehmank360@gopro.com";
 $config['bot_email'] = "admin@socialmedia.com";
 
-
+/*
 $config['upload_path'] = './uploads/';
 $config['allowed_types'] = 'gif|jpg|png';
 $config['max_size']     = '100';
 $config['max_width'] = '1024';
-$config['max_height'] = '768';
+$config['max_height'] = '768';*/

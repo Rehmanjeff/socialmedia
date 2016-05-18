@@ -85,7 +85,7 @@ public function fetch_article($cat)
 		return $row;
 	}
 
-	public function add_cat_art($cat_id)
+	public function add_cat_art($cat_id,$image_path)
 	{
 
 		$catagory_id = $cat_id;
@@ -93,7 +93,7 @@ public function fetch_article($cat)
 			$title = $this->input->post('title');
 			$articletext = $this->input->post('articletext',true);
 			
-			$sql = " INSERT INTO user_articles (`cat_id_fk`, `title`, `article`) VALUES ( '$catagory_id', '{$title}', '{$articletext}'); ";
+			$sql = " INSERT INTO user_articles (`cat_id_fk`, `title`, `article`, `article_image`) VALUES ( '$catagory_id', '{$title}', '{$articletext}', '{$image_path}'); ";
 
 			$result = $this->db->query($sql);
 			// $row = $result->row();
@@ -111,7 +111,7 @@ public function fetch_article($cat)
 		return $result;
 	}
 
-	public function add_article()
+	public function add_article($image_path)
 	{
 			$id = $this->input->post('hiddenValue');
 			$title = $this->input->post('title');
@@ -121,7 +121,7 @@ public function fetch_article($cat)
 
 			$articletext = $this->input->post('articletext',true);
 		
-			$sql = " INSERT INTO user_articles (`cat_id_fk`, `title`, `article`) VALUES ( '$catagory_id', '{$title}', '{$articletext}'); ";
+			$sql = " INSERT INTO user_articles (`cat_id_fk`, `title`, `article`, `article_image`) VALUES ( '$catagory_id', '{$title}', '{$articletext}', '{$image_path}'); ";
 
 /*			$sql = "INSERT INTO user_articles (`cat_id_fk`, `title`, `article`) VALUES ('{$catagory_id}', '{$title}', '{$articletext}') ";
 */
