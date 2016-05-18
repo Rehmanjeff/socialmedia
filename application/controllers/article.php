@@ -115,7 +115,18 @@ class Article extends CI_Controller
 	{
 		$catagory_id;
 		// = $this->input->post('catagory_select');
+		
 
+		$config = array(
+    'table' => 'mytable',
+    'id' => 'id',
+    'field' => 'uri',
+    'title' => 'title',
+    'replacement' => 'dash' // Either dash or underscore
+);
+$this->load->library('slug', $config);
+
+https://ericlbarnes.com/2011/11/21/codeigniter-slug-library/
 
 		if ($this->uri->segment(3) === FALSE)
 		{
@@ -124,21 +135,50 @@ class Article extends CI_Controller
 		else
 		{
 		        $catagory_id = $this->uri->segment(3);
+		        $catagory_id = url_title($catagory_id);
+		        
+		        // die();
 		        // echo $catagory_id;
 		        // die();
 		}
 
 		$catagory_id = $this->model_article->get_catagory_id($catagory_id);
 		$catagory_id = $catagory_id->row();
+		var_dump($catagory_id);
+		die();
 		$catagory_id = $catagory_id->cat_id;
 
-		$display['data'] = $this->model_article->display($catagory_id);
+		$display = $this->model_article->display($catagory_id);
+		$session_data = $this->session->userdata('logged_in');
+// echo $session_data['id'];
+// die();
+		$catagory = $this->model_article->fetch_catagory($session_data['id']);
+
+			$cat = $catagory->row();
+			$cat = $cat->cat_id;
+			// print_r($cat);
+			// die();
+			// it should take cat_id, and cat_id should be extracted from users table
+			$image = $this->model_article->fetch_article($cat);
+			$image = $image->row();
+			$image = $image->article_image;
+			// echo $cat."<br>";
+			// echo $image;
+			// die();
+
+			$data = array(
+				'query' => $catagory,
+				'img' => $image,
+				'data' => $display );
+
+
+
 	
 
 		if (!empty($display)) 
 		{
 			$this->load->view('layouts/header');
-			$this->load->view('view_only', $display);
+			$this->load->view('view_only', $data);
 			$this->load->view('layouts/footer');
 		}
 		else

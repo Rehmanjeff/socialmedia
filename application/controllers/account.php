@@ -16,6 +16,8 @@ class Account extends CI_Controller
 		if ($this->session->userdata('logged_in')) 
 		{
 			
+			$id = $session_data['id'];
+			$image = $this->model_edit->fetch_image($id);
 // echo $image;
 // die();
 			$catagory = $this->model_article->fetch_catagory($session_data['id']);
@@ -24,9 +26,13 @@ class Account extends CI_Controller
 			// print_r($cat);
 			// die();
 			// it should take cat_id, and cat_id should be extracted from users table
-			$image = $this->model_article->fetch_article($cat);
-			$image = $image->row();
-			$image = $image->article_image;
+			
+
+			// $image = $this->model_article->fetch_article($cat);
+			// $image = $image->row();
+			// $image = $image->article_image;
+
+
 			// echo $cat."<br>";
 			// echo $image;
 			// die();
@@ -34,13 +40,12 @@ class Account extends CI_Controller
 			$data = array(
 				'query' => $catagory,
 				'img' => $image );
+
 			$this->session->set_userdata($data);
 
-			$id = $session_data['id'];
-			$image['img'] = $this->model_edit->fetch_image($id);
 			
 			$this->load->view('layouts/header');
-			$this->load->view('home_page', $image); #,array('logged_in' => $this->logged_in)
+			$this->load->view('home_page', $data); #,array('logged_in' => $this->logged_in)
 			$this->load->view('layouts/footer');
 		}
 		else

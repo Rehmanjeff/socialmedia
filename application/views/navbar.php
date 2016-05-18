@@ -25,6 +25,13 @@
                         <li><a href="#">Trash</a></li>
                     </ul>
                 </li> -->
+                
+                    <?php
+                        foreach ($query->result() as $key):
+                    ?>
+                    <li><a href="<?php  echo base_url();?>article/display_articles/<?php echo url_title($key->cat_name); ?>"><?php echo $key->cat_name; ?></a></li> <!-- value="<?php echo $key->cat_id; ?>"> <?php echo $key->cat_name; ?></option> -->
+                    <?php endforeach; ?>
+                
             </ul>
             <form role="search" class="navbar-form navbar-left">
                 <div class="form-group">

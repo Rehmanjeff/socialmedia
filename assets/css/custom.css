@@ -30,7 +30,7 @@ p.capitalize
 	margin-bottom: 30px;
 	margin-left: 30px;
 }
-ul {
+.catagory_navigation ul {
 
     list-style-type: none;
     margin: 0;
@@ -39,11 +39,11 @@ ul {
     background-color: #333;
 }
 
-li {
+.catagory_navigation li {
     float: left;
 }
 
-li a {
+.catagory_navigation li a {
     display: block;
     color: white;
     text-align: center;
@@ -51,6 +51,6 @@ li a {
     text-decoration: none;
 }
 
-li a:hover {
+.catagory_navigation li a:hover {
     background-color: #111;
 }

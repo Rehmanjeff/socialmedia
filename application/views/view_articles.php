@@ -28,7 +28,7 @@
 					<label for="">
 				  		View Articles by Catagory: 
 				  	</label>
-<!-- 		<div class="col-md-4"> -->
+		<div class="catagory_navigation">
 
 
 			<!-- <?php form_open('display_articles', array('id' => 'recommendForm'));?> -->
@@ -47,7 +47,7 @@
 				<!-- <br> -->
 				<!-- <input class="btn btn-primary" type="submit" value="Submit"> -->
 			</form>
-		<!-- </div> -->
+		</div>
 
 		 	 <div class="col-md-2 col-md-offset-5">
 		 	 	<?php 
